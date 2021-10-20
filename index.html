@@ -1,34 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Repreoduce a Painting</title>
+    <title>Guess That Color</title>
+    <link href="style.css" rel="stylesheet">
+
+    <script src="libraries/p5.js" type="text/javascript"></script>
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>\
+    <script src="libraries/jquery.js"></script>
+
     
-       <!-- link to style sheet -->
-    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <script></script>
 
-</head>
+      <h1>Guess That<br>
+      <span id="colorDisplay"></span></h1>
 
-<body>
-  <h1>Reproduce a Painting</h1>
+      <div id="settingDisplay">
+        <span>
+          <button id="easy" class="difficulty">Easy</button>
+          <button id="medium" class="difficulty">Medium</button>
+          <button id="hard" class="difficulty selected">Hard</button>
+        </span>
 
-  <div class="grid-container">
-      <!-- col 1 -->
-      <div class="triangle tri1"></div>
-      <div class="triangle tri2"></div>
-      <div class="triangle tri3"></div>
-      <div class="triangle tri4"></div>
+        <span id="message"></span>
         
-      <!-- col 2 -->
-      <div class="triangle tri5"></div>
-      <div class="triangle tri6"></div>
-      <div class="triangle tri7"></div>
-      <div class="triangle tri8"></div>
-  </div>
+        <span>
+          <button id="rbg" class="game selected">RGB</button>
+          <button id="hex" class="game">Hex</button>
+        </span>
 
-  <h2><a href="animate.html">Animate a Painting</a></h2>
+        <button id="reset">New Colors</button>
 
-</body>
+      </div>
+
+      <div id="container">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+      </div>
+
+      <footer>
+        <script src="game.js" type="text/javascript"></script>
+      </footer>
+
+  </body>
 </html>
