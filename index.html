@@ -1,24 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TTI I</title>
-</head>
-<body>
-    <h1>The time I... </h1>
-    <h3>By: Kaitlyn Rice</h3>
-    <div><b>Summer 2018</b><br></div>
-    <div><b>3 weeks before</b></div>
-    <p>One random day, I recieved a phone call from my Aunt. I figued it would be just a quick catchup; the classic "how was finals?" and "have any plans this summer?". Instead, I was met with her explaining that she had a work trip coming up and both her husband and son were busy during that time - my aunt doesn't like traveling alone.</p>
-    <p>The call continues with her giving details on this trip:</p>
-    <ul>
-        <li><b>July 2 - July 6:</b> Reykjavik, Iceland</li>
-        <li><b>July 6 - July 11:</b> Stockholm, Sweden</li>
-    </ul>
-    <p>Luckily I had gotten my passport that same year, so that wouldn't be an issue. The caveat was I would have to fly back from Sweden alone. I had never flown alone let alone flown to another country. That wasn't going to stop me, so of course I told her I would come along. Who would pass up an opportunity to go abroad?</p>
-    <div><a href="hyperlinkStory2.html">Next...</a></div>
-    <a href="https://www.disneychannel.ca" target="_blank"><img src="img/disneyTTI.jpg" width="560" height="315" ></a>
-</body>
-</html>
+<HTML>
+<HEAD>
+	<TITLE>StAR-Bot (elizabot.js)</TITLE>
+	<link rel="stylesheet" href="style.css">
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="elizabot.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="elizadata.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+
+var eliza = new ElizaBot();
+var elizaLines = new Array();
+
+var displayCols = 60;
+var displayRows = 20;
+
+function elizaReset() {
+	eliza.reset();
+	elizaLines.length = 0;
+	elizaStep();
+}
+
+function elizaStep() {
+	var f = document.forms.e_form;
+	var userinput = f.e_input.value;
+	if (eliza.quit) {
+		f.e_input.value = '';
+		if (confirm("This session is over.\nStart over?")) elizaReset();
+		f.e_input.focus();
+		return;
+	}
+	else if (userinput != '') {
+		var usr = 'YOU:       ' + userinput;
+		var rpl = 'VICTOR:  ' + eliza.transform(userinput);
+		elizaLines.push(usr);
+		elizaLines.push(rpl);
+		// display nicely
+		// (fit to textarea with last line free - reserved for extra line caused by word wrap)
+		var temp  = new Array();
+		var l = 0;
+		for (var i=elizaLines.length-1; i>=0; i--) {
+			l += 1 + Math.floor(elizaLines[i].length/displayCols);
+			if (l >= displayRows) break
+			else temp.push(elizaLines[i]);
+		}
+		elizaLines = temp.reverse();
+		f.e_display.value = elizaLines.join('\n');
+	}
+	else if (elizaLines.length == 0) {
+		// no input and no saved lines -> output initial
+		var initial = 'VICTOR:  ' + eliza.getInitial();
+		elizaLines.push(initial);
+		f.e_display.value = initial + '\n';
+	}
+	f.e_input.value = '';
+	f.e_input.focus();
+}
+
+</SCRIPT>
+</HEAD>
+
+<BODY TOPMARGIN="0" LEFTMARGIN="0" RIGHTMARGIN="0" BOTTOMMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" STYLE="border:0" onload="window.setTimeout('elizaReset()',100)"><A NAME="top"></A>
+
+<CENTER>
+<P>&nbsp;</P>
+<H3>VICTOR E. VIKING</H3>
+<H4>Western Washington University Admissions</H4>
+<TABLE BORDER="0" CELLSPACING="10" CELLPADDING="0">
+<FORM NAME="e_form" onsubmit="elizaStep();return false">
+<TR><TD COLSPAN="2"><TEXTAREA NAME="e_display" COLS="60" ROWS="20"></TEXTAREA></TD></TR>
+<TR VALIGN="middle">
+	<TD><INPUT TYPE="text" NAME="e_input" SIZE="50"></TD>
+	<TD ALIGN="right"><INPUT TYPE="submit" VALUE="&nbsp;Talk&nbsp;"> <INPUT TYPE="reset" VALUE="Reset" onClick="window.setTimeout('elizaReset()',100)"></TD>
+</TR>
+</FORM>
+</TABLE>
+<a href="https://www.wwu.edu"><h3>Make Waves</h3></a>
+</CENTER>
+
+</BODY>
+</HTML>
