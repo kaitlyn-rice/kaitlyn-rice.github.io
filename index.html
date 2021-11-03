@@ -1,80 +1,26 @@
-<HTML>
-<HEAD>
-	<TITLE>StAR-Bot (elizabot.js)</TITLE>
-	<link rel="stylesheet" href="style.css">
-	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="elizabot.js"></SCRIPT>
-	<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="elizadata.js"></SCRIPT>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="getData.js"></script>
 
-<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-var eliza = new ElizaBot();
-var elizaLines = new Array();
+    <body>
+        <h1>How many people are currently in space?</h1>
 
-var displayCols = 60;
-var displayRows = 20;
+        <div class="container">
+            <div class="earth"></span></div>
+            <span class="rocket"></span>
+        </div>
 
-function elizaReset() {
-	eliza.reset();
-	elizaLines.length = 0;
-	elizaStep();
-}
+        <div class="info">
+            <button><span id = "SpacePeople"></span></button>
+            <ul id = "astroNames"></ul>
+        </div>
 
-function elizaStep() {
-	var f = document.forms.e_form;
-	var userinput = f.e_input.value;
-	if (eliza.quit) {
-		f.e_input.value = '';
-		if (confirm("This session is over.\nStart over?")) elizaReset();
-		f.e_input.focus();
-		return;
-	}
-	else if (userinput != '') {
-		var usr = 'YOU:       ' + userinput;
-		var rpl = 'VICTOR:  ' + eliza.transform(userinput);
-		elizaLines.push(usr);
-		elizaLines.push(rpl);
-		// display nicely
-		// (fit to textarea with last line free - reserved for extra line caused by word wrap)
-		var temp  = new Array();
-		var l = 0;
-		for (var i=elizaLines.length-1; i>=0; i--) {
-			l += 1 + Math.floor(elizaLines[i].length/displayCols);
-			if (l >= displayRows) break
-			else temp.push(elizaLines[i]);
-		}
-		elizaLines = temp.reverse();
-		f.e_display.value = elizaLines.join('\n');
-	}
-	else if (elizaLines.length == 0) {
-		// no input and no saved lines -> output initial
-		var initial = 'VICTOR:  ' + eliza.getInitial();
-		elizaLines.push(initial);
-		f.e_display.value = initial + '\n';
-	}
-	f.e_input.value = '';
-	f.e_input.focus();
-}
+        
+        
 
-</SCRIPT>
-</HEAD>
-
-<BODY TOPMARGIN="0" LEFTMARGIN="0" RIGHTMARGIN="0" BOTTOMMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" STYLE="border:0" onload="window.setTimeout('elizaReset()',100)"><A NAME="top"></A>
-
-<CENTER>
-<P>&nbsp;</P>
-<H3>VICTOR E. VIKING</H3>
-<H4>Western Washington University Admissions</H4>
-<TABLE BORDER="0" CELLSPACING="10" CELLPADDING="0">
-<FORM NAME="e_form" onsubmit="elizaStep();return false">
-<TR><TD COLSPAN="2"><TEXTAREA NAME="e_display" COLS="60" ROWS="20"></TEXTAREA></TD></TR>
-<TR VALIGN="middle">
-	<TD><INPUT TYPE="text" NAME="e_input" SIZE="50"></TD>
-	<TD ALIGN="right"><INPUT TYPE="submit" VALUE="&nbsp;Talk&nbsp;"> <INPUT TYPE="reset" VALUE="Reset" onClick="window.setTimeout('elizaReset()',100)"></TD>
-</TR>
-</FORM>
-</TABLE>
-<a href="https://www.wwu.edu"><h3>Make Waves</h3></a>
-</CENTER>
-
-</BODY>
-</HTML>
+    </body>
+</html>
