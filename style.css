@@ -1,5 +1,5 @@
 body {
-    background-color: #1f1f1f;
+    background-color: #2d2d2d;
     margin: auto;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -8,7 +8,7 @@ h1 {
     text-align: center;
     line-height: 1.5;
     color: #fff;
-    background-color: #C4B454;
+    background-color: #09cb30;
     margin: 0;
     text-transform: uppercase;
     padding: 20px 0px;
@@ -25,7 +25,14 @@ h1 {
     text-align: center;
     color: #000;
 }
-
+/*  
+#scoreDisplay {
+    background-color: #000000;
+    height: 35px;
+    text-align: center;
+    color: #000;
+}
+*/
 #container {
     margin: 20px auto;
     max-width: 600px;
@@ -33,11 +40,10 @@ h1 {
 
 .square {
     width: 29%;
-    background: #C4B454;
+    background: #09cb30;
     padding-bottom: 30%;
     float: left;
     margin: 2%;
-    border-radius: 10%;
     transition: background 0.5s;
     -webkit-transition: background 0.5s;
     -moz-transition: background 0.5s;
@@ -45,7 +51,7 @@ h1 {
 
 .selected {
     color: #fff;
-    background: #C4B454;
+    background: #09cb30;
 }
 
 button {
@@ -64,8 +70,8 @@ button {
 }
 
 button:hover {
-    color: #fff;
-    background: #C4B454;
+    color: #09cb30;
+    background: #2d2d2d;
     cursor: pointer;
 }
 

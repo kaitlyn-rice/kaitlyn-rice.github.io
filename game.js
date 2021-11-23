@@ -1,20 +1,38 @@
 var heading = document.querySelector("h1");
 var displayColor = document.getElementById("colorDisplay");
 var displayMessage = document.getElementById("message");
+var selected = document.getElementsByClassName("selected");
 
 var levels = document.querySelectorAll(".difficulty");
+//var ez = document.getElementById("easy");
+//var med = document.getElementById("medium");
+//var hrd = document.getElementById("hard");
+levels[0].classList.add("selected");
+
 
 var mode = document.querySelectorAll(".game");
 var gameMode = "RGB";
+mode[0].classList.add("selected");
 
 var reset = document.querySelector("#reset");
 
-var numSqrs = 9;
+var numSqrs = 3;
 var sqrs = document.querySelectorAll(".square");
 
 var colors = [];
 var winColor;
 var userColor
+
+/*
+Funciton: hoverOver()
+Parameters: 
+    null
+
+Returns: change css on hover
+*/
+//function hoverOver(clr) {
+    //selectd.style.color = clr;
+//}
 
 /*
 Funciton: getRBG()
@@ -23,7 +41,6 @@ Parameters:
 
 Returns: randomized rgb value
 */
-
 function getRGB() {
     var r = Math.floor(Math.random() * 256);
     var g = Math.floor(Math.random() * 256);
@@ -57,7 +74,7 @@ Parameters:
 
 Returns: array of color values
 */
-function setColors(){
+function setColors(numSqr){
     if (gameMode === "RGB"){
         for (var i = 0; i < numSqrs; i++){
             colors[i] = getRGB();
@@ -94,22 +111,26 @@ Returns: null
     sets all color to winning color
 */
 function changeColor(){
+    heading.style.background = winColor;
+    displayMessage.style.color = winColor;
+    reset.style.color = winColor;
+
     for (var i = 0; i < numSqrs; i++){
         sqrs[i].style.background = winColor;
     }
-
-    heading.style.background = winColor;
-    displayMessage.style.color = winColor;
-
     for (var i = 0; i < levels.length; i++){
         levels[i].style.color = winColor;
     }
-
     for (var i = 0; i < mode.length; i++){
         mode[i].style.color = winColor;
     }
+    displayMessage.textContent = selected.length
+    selected[0].style.background = winColor;
+    selected[0].style.color = "#fff";
+    selected[1].style.background = winColor;
+    selected[1].style.color = "#fff";
 
-    reset.style.color = winColor;
+    //selectd.addEventListener("hoverOver", hoverOver(winColor));
 }
 
 /*
@@ -120,6 +141,37 @@ Parameters:
 Returns: null
     set numSqrs according to level chosen
 */
+/*
+ez.addEventListener("click", function(){
+    ez.classList.add("selected");
+    med.classList.remove("selected");
+    hrd.classList.remove("selected");
+    numSqrs = 3;
+
+    gameReset();
+});
+
+med.addEventListener("click", function(){
+    ez.classList.remove("selected");
+    med.classList.add("selected");
+    hrd.classList.remove("selected");
+    numSqrs = 6;
+
+    gameReset();
+});
+
+hrd.addEventListener("click", function(){
+    ez.classList.remove("selected");
+    med.classList.remove("selected");
+    hrd.classList.add("selected");
+    numSqrs = 9;
+
+    gameReset();
+});
+*/
+
+
+
 function setupLevels(){
     for(var i = 0; i < levels.length; i++){
         levels[i].addEventListener("click", function(){
@@ -128,6 +180,7 @@ function setupLevels(){
             levels[2].classList.remove("selected");
 
             this.classList.add("selected");
+            
             
             if (this.textContent === "Easy"){
                 numSqrs = 3;
@@ -177,7 +230,7 @@ Parameters:
     none
 
 Returns: null
-    set square colors and color gameplay
+    set square gameplay
 */
 function setupSqrs(){
     for (var i = 0; i < sqrs.length; i++){
@@ -187,7 +240,7 @@ function setupSqrs(){
             if(userColor == winColor){
                 winReset();
             } else {
-                this.style.background = "#1f1f1f";
+                this.style.background = "#2d2d2d";
                 displayMessage.textContent = "Try Again";
             }
         });
@@ -218,19 +271,22 @@ function gameReset(){
         } else {
             sqrs[i].style.display = "none";
         }
-        
     }
-    heading.style.background = "#C4B454";
-    
+
+    heading.style.background = "#09cb30";
     for (var i = 0; i < levels.length; i++){
         levels[i].style.color = "#fff";
     }
-
     for (var i = 0; i < mode.length; i++){
         mode[i].style.color = "#fff";
     }
-    
+    selected[0].style.background = "09cb30";
+    selected[0].style.color = "#fff";
+    selected[1].style.background = "09cb30";
+    selected[1].style.color = "#fff";
+
     reset.style.color = "#fff";
+    
 }
 
 /*
@@ -265,7 +321,7 @@ Returns: null
 */
 function initialize(){
     setupLevels();
-    setupMode()
+    setupMode();
     setupSqrs();
     
     gameReset();
