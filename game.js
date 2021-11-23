@@ -280,9 +280,9 @@ function gameReset(){
     for (var i = 0; i < mode.length; i++){
         mode[i].style.color = "#fff";
     }
-    selected[0].style.background = "09cb30";
+    selected[0].style.background = "#09cb30";
     selected[0].style.color = "#fff";
-    selected[1].style.background = "09cb30";
+    selected[1].style.background = "#09cb30";
     selected[1].style.color = "#fff";
 
     reset.style.color = "#fff";
