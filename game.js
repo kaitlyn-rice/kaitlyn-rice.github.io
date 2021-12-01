@@ -32,7 +32,6 @@ var score = 0;
 Funciton: getRBG()
 Parameters: 
     null
-
 Returns: randomized rgb value
 */
 function getRGB() {
@@ -47,10 +46,10 @@ function getRGB() {
 Funciton: getHEX()
 Parameters: 
     null
-
 Returns: randomized hex value
 */
 function getHEX(){
+    
     var digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
     var hexidecimal = "#";
 
@@ -59,17 +58,52 @@ function getHEX(){
     }
 
     return hexidecimal;
-}
+} 
+
+/*
+Funciton: rgb2hex()
+Parameters: 
+    rgb
+Returns: converted rgb to hex value
+*/
+function rgb2hex(rgb) {
+    if (rgb.search("rgb") == -1) {
+        return rgb;
+    } else {
+        var sep;
+        if (rgb.indexOf(",") > -1) {
+            sep = ",";
+        } else {
+            sep = " ";
+        }
+        rgb = rgb.substr(4).split(")")[0].split(sep);
+        
+        var r = (+rgb[0]).toString(16);
+        var g = (+rgb[1]).toString(16);
+        var b = (+rgb[2]).toString(16);
+  
+        if (r.length == 1) {
+            r = "0" + r;
+        }
+        if (g.length == 1) {
+            g = "0" + g;
+        }   
+        if (b.length == 1) {
+            b = "0" + b;
+        } 
+  
+        return "#" + r + g + b;
+    } 
+  }
 
 /*
 Funciton: setColors()
 Parameters: 
-    null
-
+    numSqr, number of squares
 Returns: array of color values
 */
 function setColors(numSqr){
-    if (gameMode === "RGB"){
+    if (gameMode == "RGB"){
         for (var i = 0; i < numSqrs; i++){
             colors[i] = getRGB();
         }
@@ -78,29 +112,25 @@ function setColors(numSqr){
             colors[i] = getHEX();
         }
     }
-
     return colors;
 }
 
 /*
 Function: pickColor
-Parameters:
-    arr: array of randomized colors (colors[])
-
+Parameters: 
+    null
 Returns: value of color array at a random index
         * Note: initialize winningColor 
 */
 function pickColor(){
     var index = Math.floor(Math.random() * colors.length);
-
     return colors[index];
 }
 
 /*
 Function: changeColor 
 Parameters:
-    clr
-
+    clr, color value
 Returns: null
     sets all color to clr
 */
@@ -124,8 +154,7 @@ function changeColor(clr){
 /*
 Function: setupLevels
 Parameters:
-    none
-
+    null
 Returns: null
     set numSqrs according to level chosen
 */
@@ -194,8 +223,7 @@ function setupLevels(){
 /*
 Function: setupMode
 Parameters:
-    none
-
+    null
 Returns: null
     set gameMode to either rgb or hex
 */
@@ -204,13 +232,12 @@ function setupMode() {
         mode[i].addEventListener("click", function(){
             score = 0;
 
-            mode[0].style.background = "none";
-            mode[0].style.color = "#09cb30";
-            mode[1].style.background = "none";
-            mode[1].style.color = "#09cb30";
+            for (var i = 0; i < mode.length; i++) {
+                mode[i].style.background = "none";
+                mode[i].style.color = "#09cb30";
 
-            mode[0].classList.remove("selected");
-            mode[1].classList.remove("selected");
+                mode[i].classList.remove("selected");
+            }
 
             this.classList.add("selected");
             
@@ -228,8 +255,7 @@ function setupMode() {
 /*
 Function: setupSqrs
 Parameters:
-    none
-
+    null
 Returns: null
     set square gameplay
 */
@@ -237,7 +263,11 @@ function setupSqrs(){
     for (var i = 0; i < sqrs.length; i++){
         sqrs[i].addEventListener("click", function(){
             userColor = this.style.background;
-            
+
+            if (gameMode == "HEX") {
+                userColor = rgb2hex(userColor);
+            }
+
             if(userColor == winColor){
                 winReset();
             } else {
@@ -252,8 +282,7 @@ function setupSqrs(){
 /*
 Function: gameReset
 Parameters:
-    none
-
+    null
 Returns: null
     resets gameplay
 */
@@ -266,6 +295,7 @@ function gameReset(){
     winColor = pickColor();
     displayColor.textContent = winColor;
     changeColor("#09cb30");
+
 
     switch(numSqrs){
         case 3:
@@ -294,8 +324,7 @@ function gameReset(){
 /*
 Function: winReset
 Parameters:
-    none
-
+    null
 Returns: null
     user choice, resets game board or show winning board
 */
@@ -322,7 +351,7 @@ reset.addEventListener("click", function(){
 /*
 Function: initialize
 Parameters:
-    none
+    null
 Returns: null
     start gameplay
 */

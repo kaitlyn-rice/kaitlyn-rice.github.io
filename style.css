@@ -37,23 +37,31 @@ h1 {
     font-weight: bold;
 }
 
-#explain {
-    max-width: 20%;
-    margin: auto 1%; 
-    float: left;
-}
-
 #container {
     margin: 20px auto;
-    max-width: 600px;
-    min-width: 56%;
-    float: left;
+}
+
+#description {
+    display: inline-flex;
+    justify-content: center;
+    margin: auto 12em;
+    max-width: 80%;
+}
+
+#description h3 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#explain {
+    max-width: 20%;
+    margin: auto 50px; 
+    text-align: center;
 }
 
 #instruct {
     max-width: 20%; 
-    margin: auto 1%;
-    float: left;
+    margin: 0 50px;
 }
 
 .square {
@@ -86,5 +94,108 @@ button:hover {
     cursor: pointer;
 }
 
-
+/* media queries */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    h1, #colorDisplay {
+        font-size: 32px;
+    }
+    #container {
+        max-width: 100%;
+    }
+    #description {
+        display: table;
+        max-width: 100%;
+        margin: auto;
+    }
+    #explain {
+        max-width: 80%;
+        margin: auto 10%; 
+    }
+    #instruct {
+        max-width: 80%;
+        margin: auto 10%; 
+    }    
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    #container {
+        max-width: 65%;
+    }
+    #description {
+        display: table;
+        max-width: 100%;
+        margin: auto;
+    }
+    #explain {
+        max-width: 80%;
+        margin: auto 10%; 
+    }
+    #instruct {
+        max-width: 80%;
+        margin: auto 10%; 
+    }        
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    #container {
+        max-width: 45%;
+    }
+    #description {
+        display: inline-flex;
+        max-width: 100%;
+        margin: auto;
+    }
+    #explain {
+        max-width: 30%;
+        margin: 10px; 
+    }
+    #instruct {
+        max-width: 30%; 
+        margin: 10px;
+    }    
+  } 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    #container {
+        max-width: 40%;
+    }
+    #description {
+        display: inline-flex;
+        max-width: 80%;
+        margin: auto 12em;
+    }
+    #explain {
+        max-width: 30%;
+        margin: 10px; 
+    }
+    #instruct {
+        max-width: 30%; 
+        margin: 10px;
+    }
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    #container {
+        max-width: 50%;
+    }
+    #description {
+        display: inline-flex;
+        max-width: 80%;
+        margin: auto 12em;
+    }
+    #explain {
+        max-width: 30%;
+        margin: 15px; 
+        text-align: center;
+    }
+    #instruct {
+        max-width: 30%; 
+        margin: 15px;
+    }
+  }
 
