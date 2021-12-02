@@ -31,6 +31,10 @@ h1 {
     color: #fff;
 }
 
+#bar0, #bar1, #bar2 {
+    display: none;
+}
+
 #score {
     display: inline-block;
     width: 20%;
@@ -51,6 +55,11 @@ h1 {
 #description h3 {
     text-transform: uppercase;
     text-align: center;
+    color: #09cb30;
+}
+
+#description p {
+    color: #fff;
 }
 
 #explain {
@@ -73,6 +82,10 @@ h1 {
     transition: ease-in-out background 0.15s;
     -webkit-transition: background 0.5s;
     -moz-transition: background 0.5s;
+
+    text-align: center;
+    font-weight: bolder;
+    font-size: 150%;
 }
 
 button {
@@ -124,16 +137,16 @@ button:hover {
         max-width: 65%;
     }
     #description {
-        display: table;
+        display: inline-block;
         max-width: 100%;
         margin: auto;
     }
     #explain {
-        max-width: 80%;
+        max-width: 100%;
         margin: auto 10%; 
     }
     #instruct {
-        max-width: 80%;
+        max-width: 100%;
         margin: auto 10%; 
     }        
   }

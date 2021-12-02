@@ -272,6 +272,8 @@ function setupSqrs(){
                 winReset();
             } else {
                 pts--;
+                this.style.color = this.style.background;
+                this.innerHTML = userColor;
                 this.style.background = "#2d2d2d";
             }
         });
@@ -338,6 +340,7 @@ function winReset(){
         reset.textContent = "Play Again?";
         for (var i = 0; i < numSqrs; i++){
             sqrs[i].style.background = winColor;
+            sqrs[i].innerHTML = "";
         }
         changeColor(winColor);
     }
