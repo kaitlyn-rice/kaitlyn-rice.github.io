@@ -145,6 +145,9 @@ function changeColor(clr){
     for (var i = 0; i < mode.length; i++){
         mode[i].style.color = clr;
     }
+    for (var i = 0; i < sqrs.length; i++){
+        sqrs[i].innerHTML = " ";
+    }
     selected[0].style.background = clr;
     selected[0].style.color = "#fff";
     selected[1].style.background = clr;
@@ -314,7 +317,7 @@ function gameReset(){
     }
 
     for (var i = 0; i < sqrs.length; i++){
-        sqrs[i].innerHTML = "";
+        sqrs[i].innerHTML = " ";
         if (colors[i]){
             sqrs[i].style.display = "block";
             sqrs[i].style.background = colors[i];
@@ -341,7 +344,7 @@ function winReset(){
         reset.textContent = "Play Again?";
         for (var i = 0; i < numSqrs; i++){
             sqrs[i].style.background = winColor;
-            sqrs[i].innerHTML = "";
+            sqrs[i].innerHTML = " ";
         }
         changeColor(winColor);
     }
