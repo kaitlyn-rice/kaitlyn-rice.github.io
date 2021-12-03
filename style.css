@@ -85,7 +85,6 @@ h1 {
 
     text-align: center;
     font-weight: bolder;
-    font-size: 150%;
 }
 
 button {
@@ -116,6 +115,9 @@ button:hover {
     #container {
         max-width: 100%;
     }
+    .square {
+        font-size: 100%;
+    }
     #description {
         display: table;
         max-width: 100%;
@@ -135,6 +137,9 @@ button:hover {
   @media only screen and (min-width: 600px) {
     #container {
         max-width: 65%;
+    }
+    .square {
+        font-size: 115%;
     }
     #description {
         display: inline-block;
@@ -156,6 +161,9 @@ button:hover {
     #container {
         max-width: 45%;
     }
+    .square {
+        font-size: 125%;
+    }
     #description {
         display: inline-flex;
         max-width: 100%;
@@ -176,6 +184,9 @@ button:hover {
     #container {
         max-width: 40%;
     }
+    .square {
+        font-size: 150%;
+    }
     #description {
         display: inline-flex;
         max-width: 80%;
@@ -195,6 +206,9 @@ button:hover {
   @media only screen and (min-width: 1200px) {
     #container {
         max-width: 50%;
+    }
+    .square {
+        font-size: 175%;
     }
     #description {
         display: inline-flex;

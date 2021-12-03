@@ -273,7 +273,7 @@ function setupSqrs(){
             } else {
                 pts--;
                 this.style.color = this.style.background;
-                this.innerHTML = userColor;
+                this.textContent = userColor;
                 this.style.background = "#2d2d2d";
             }
         });
@@ -314,6 +314,7 @@ function gameReset(){
     }
 
     for (var i = 0; i < sqrs.length; i++){
+        sqrs[i].innerHTML = "";
         if (colors[i]){
             sqrs[i].style.display = "block";
             sqrs[i].style.background = colors[i];
